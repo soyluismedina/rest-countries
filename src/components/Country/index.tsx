@@ -1,7 +1,8 @@
+import { ICountry } from "@/services/getFullCountry";
+import Link from "next/link";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import "./stylesCountry.css";
-import Link from "next/link";
 
 export default function Country({
   flags,
@@ -9,13 +10,7 @@ export default function Country({
   population,
   region,
   capital,
-}: {
-  flags: any;
-  name: any;
-  population: number;
-  region: string;
-  capital: string;
-}) {
+}: Pick<ICountry, "flags" | "name" | "population" | "region" | "capital">) {
   const { darkMode } = useContext(ThemeContext);
 
   return (

@@ -1,19 +1,20 @@
 "use client";
 import { createContext, useEffect, useMemo, useState, Dispatch } from "react";
 import { getCountries } from "../services/getCountries";
+import { ICountry } from "../services/getFullCountry";
 
 export const FilterContext = createContext<{
   filters: {
     name: string | null;
-    region: ((countries: any) => boolean) | null;
+    region: ((countries: ICountry) => boolean) | null;
   };
   setFilters: Dispatch<{
     name: string | null;
-    region: ((countries: any) => boolean) | null;
+    region: ((countries: ICountry) => boolean) | null;
   }>;
-  matches: any[];
+  matches: ICountry[];
   isLoading: boolean;
-  countries: any[];
+  countries: ICountry[];
 }>({
   filters: { name: null, region: null },
   setFilters: () => {},
@@ -27,12 +28,15 @@ export function FilterContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<{
+    name: string | null;
+    region: ((countries: ICountry) => boolean) | null;
+  }>({
     name: null,
     region: null,
   });
 
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState<ICountry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,23 +47,26 @@ export function FilterContextProvider({
   }, []);
 
   const matches = useMemo(() => {
-    const filtersToAplly = Object.values(filters).filter(Boolean);
     let matches = countries;
 
-    for (let filter of filtersToAplly) {
-      if (filter !== null) {
-        matches = matches.filter(filter);
-      }
+    // Apply name filter if present
+    if (filters.name) {
+      matches = matches.filter((country) =>
+        country.name.common.toLowerCase().includes(filters.name!.toLowerCase()),
+      );
     }
+
+    // Apply region filter if present
+    if (filters.region) {
+      matches = matches.filter(filters.region);
+    }
+
     return matches;
   }, [countries, filters]);
 
   const data = {
     filters,
-    setFilters: setFilters as Dispatch<{
-      name: string | null;
-      region: ((countries: any) => boolean) | null;
-    }>,
+    setFilters,
     matches,
     isLoading,
     countries,
