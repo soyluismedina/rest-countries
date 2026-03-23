@@ -5,12 +5,13 @@ import { ThemeContext } from "../../context/ThemeContext";
 import Country from "../Country";
 import Spinner from "../Spinner";
 import "./stylesList.css";
+import { ICountry } from "@/services/getFullCountry";
 
 function ListOfCountries() {
   const { isLoading, matches } = useContext(FilterContext);
   const { darkMode } = useContext(ThemeContext);
 
-  const compare_name = (a, b) => {
+  const compare_name = (a: ICountry, b: ICountry) => {
     if (a.name.common.toLowerCase() < b.name.common.toLowerCase()) {
       return -1;
     }

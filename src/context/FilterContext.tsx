@@ -1,8 +1,20 @@
 "use client";
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState, Dispatch } from "react";
 import { getCountries } from "../services/getCountries";
 
-export const FilterContext = createContext({
+export const FilterContext = createContext<{
+  filters: {
+    name: string | null;
+    region: ((countries: any) => boolean) | null;
+  };
+  setFilters: Dispatch<{
+    name: string | null;
+    region: ((countries: any) => boolean) | null;
+  }>;
+  matches: any[];
+  isLoading: boolean;
+  countries: any[];
+}>({
   filters: { name: null, region: null },
   setFilters: () => {},
   matches: [],
@@ -25,7 +37,6 @@ export function FilterContextProvider({
 
   useEffect(() => {
     getCountries().then((res) => {
-      console.log({ res });
       setIsLoading(false);
       setCountries(res);
     });
@@ -36,12 +47,23 @@ export function FilterContextProvider({
     let matches = countries;
 
     for (let filter of filtersToAplly) {
-      matches = matches.filter(filter);
+      if (filter !== null) {
+        matches = matches.filter(filter);
+      }
     }
     return matches;
   }, [countries, filters]);
 
-  const data = { filters, setFilters, matches, isLoading, countries };
+  const data = {
+    filters,
+    setFilters: setFilters as Dispatch<{
+      name: string | null;
+      region: ((countries: any) => boolean) | null;
+    }>,
+    matches,
+    isLoading,
+    countries,
+  };
 
   return (
     <FilterContext.Provider value={data}>{children}</FilterContext.Provider>

@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
-import FullCountry from "../components/FullCountry";
-import Spinner from "../components/Spinner";
-import { getCountryByCode } from "../services/getCountryByCode";
-import { getFullCountry } from "../services/getFullCountry";
+import FullCountry from "../../components/FullCountry";
+import Spinner from "../../components/Spinner";
+import { getCountryByCode } from "../../services/getCountryByCode";
+import { getFullCountry, ICountry } from "../../services/getFullCountry";
 import { useParams } from "next/navigation";
 
 export default function CountrySingle() {
   const { name, code } = useParams();
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState<ICountry[] | null>(null);
 
   useEffect(() => {
     {
@@ -24,7 +24,7 @@ export default function CountrySingle() {
       {country === null ? (
         <Spinner />
       ) : (
-        country.map(
+        country?.map(
           ({
             name,
             capital,
@@ -38,7 +38,7 @@ export default function CountrySingle() {
             borders,
           }) => (
             <FullCountry
-              key={name}
+              key={name.common}
               name={name}
               capital={capital}
               region={region}

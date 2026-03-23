@@ -1,4 +1,4 @@
-import CountrySingle from "@/Pages/CountrySingle";
+import CountrySingle from "@/modules/CountryInfo/CountrySingle";
 
 export default function PageCountryByCode() {
   return <CountrySingle />;

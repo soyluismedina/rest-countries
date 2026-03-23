@@ -3,6 +3,7 @@ import TagBorde from "../TagBorder";
 import "./stylesFullCountry.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useRouter } from "next/navigation";
+import { ICountry } from "@/services/getFullCountry";
 
 function FullCountry({
   flags,
@@ -15,7 +16,7 @@ function FullCountry({
   currencies,
   languages,
   borders,
-}) {
+}: ICountry) {
   const { darkMode } = useContext(ThemeContext);
   const router = useRouter();
 
@@ -30,8 +31,7 @@ function FullCountry({
           onClick={handleClick}
           className={`${darkMode ? "fullCountry__button" : "fullCountry__button fullCountry__buttonLight"}`}
         >
-          {" "}
-          <ion-icon name="arrow-back-outline"></ion-icon> Back{" "}
+          Back
         </button>
       </div>
       <div className="fullCountry__container">

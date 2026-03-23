@@ -8,7 +8,8 @@ export default function FilterSelect() {
   const { filters, setFilters } = useContext(FilterContext);
   const { darkMode } = useContext(ThemeContext);
 
-  const onChange = (filter) => {
+  const onChange = (filter: ((countries: any) => boolean) | null) => {
+    console.log({ filter });
     setFilters({ ...filters, region: filter });
   };
 

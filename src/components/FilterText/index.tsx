@@ -2,35 +2,25 @@
 import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import { ThemeContext } from "../../context/ThemeContext";
+import { ICountry } from "@/services/getFullCountry";
 
 function FilterText() {
   const { filters, setFilters } = useContext(FilterContext);
   const { darkMode } = useContext(ThemeContext);
 
-  const onChange = (filter) => {
+  const onChange = (filter: string | null) => {
     setFilters({ ...filters, name: filter });
   };
 
-  const handleChange = (value) => {
-    onChange(
-      value
-        ? (countries) =>
-            countries.name.common.includes(
-              value.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
-                letter.toUpperCase(),
-              ),
-            )
-        : null,
-    );
+  const handleChange = (value: string) => {
+    onChange(value || null);
   };
 
   return (
     <div
       className={`${darkMode ? "input__container" : "input__container input__containerLight"}`}
     >
-      <div className={`${darkMode ? "icon" : "icon iconLight"}`}>
-        <ion-icon name="search-sharp"></ion-icon>
-      </div>
+      <div className={`${darkMode ? "icon" : "icon iconLight"}`}></div>
       <input
         type="text"
         name="search"
