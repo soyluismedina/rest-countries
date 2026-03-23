@@ -17,22 +17,11 @@ Users should be able to:
 
 ### Screenshot
 
-![Home (theme dark)](./photos/Home__dark.webp)
 
 
-![Home (theme light)](./photos/Home__light.webp)
+![Home (theme light)](./photos/image.png)
 
 
-![Home (responsive with theme dark)](./photos/Home__responsiveDark.webp)
-
-
-![Country (theme dark)](./photos/Country__dark.webp)
-
-
-![Country (theme light)](./photos/Country__light.webp)
-
-
-![Country (responsive with theme dark)](./photos/Country__responsiveDark.webp)
 
 ### Links
 
