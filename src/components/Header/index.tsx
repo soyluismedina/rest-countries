@@ -9,7 +9,7 @@ export default function Header() {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
-    localStorage.setItem("themeModeRest", String(darkMode));
+    window.localStorage.setItem("themeModeRest", String(darkMode));
   }, [darkMode]);
 
   const handlClick = () => {

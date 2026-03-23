@@ -12,7 +12,7 @@ export default function FilterSelect() {
     setFilters({ ...filters, region: filter });
   };
 
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     setSelect(value);
     onChange(value ? (countries) => countries.region.includes(value) : null);
   };

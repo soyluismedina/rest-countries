@@ -1,24 +1,52 @@
 .tagBorder {
-  height: 31px;
-  width: 77px;
+  height: 36px;
+  width: 85px;
   font-weight: 600;
-  letter-spacing: 2px;
-  border-radius: 6px;
-  box-shadow: 0 0 3px black;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: hsl(209, 23%, 22%);
+  background: linear-gradient(
+    135deg,
+    hsl(209, 23%, 22%) 0%,
+    hsl(209, 23%, 18%) 100%
+  );
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tagBorder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    135deg,
+    hsl(209, 23%, 25%) 0%,
+    hsl(209, 23%, 21%) 100%
+  );
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .tagBorderLight {
-  background-color: hsl(0, 0%, 100%);
-  box-shadow: 0 0 3px hsl(0, 0%, 52%);
+  background: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 98%) 100%
+  );
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   color: hsl(200, 15%, 8%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tagBorderLight:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 96%) 100%);
 }
