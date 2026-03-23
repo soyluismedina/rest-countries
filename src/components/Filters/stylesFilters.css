@@ -5,44 +5,69 @@
   max-width: 1280px;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .input__container {
-  background-color: hsl(209, 23%, 22%);
+  background: linear-gradient(
+    145deg,
+    hsl(209, 23%, 22%) 0%,
+    hsl(209, 23%, 18%) 100%
+  );
   display: flex;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
   width: 100%;
   max-width: 420px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.input__container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .input__containerLight {
-  background-color: hsl(0, 0%, 100%);
+  background: linear-gradient(
+    145deg,
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 98%) 100%
+  );
   color: hsl(200, 15%, 8%);
-  box-shadow: 0 0 3px hsl(0, 0%, 52%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.input__containerLight:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
 .input__container input {
-  background-color: hsl(209, 23%, 22%);
-  padding: 15px 20px 15px 0px;
+  background: transparent;
+  padding: 16px 20px 16px 0px;
   outline: none;
   border: none;
   color: white;
   width: 100%;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
 }
 
 .input__containerLight input {
-  background-color: hsl(0, 0%, 100%);
+  background: transparent;
   color: hsl(200, 15%, 8%);
 }
 
 .input__container input::placeholder {
-  color: hsla(360, 100%, 100%, 0.52);
+  color: hsla(360, 100%, 100%, 0.6);
+  font-weight: 400;
 }
 
 .input__containerLight input::placeholder {
-  color: hsl(200, 5%, 22%);
+  color: hsl(200, 5%, 40%);
 }
 
 .icon {
@@ -52,38 +77,83 @@
   justify-content: center;
   align-items: center;
   width: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.input__container:hover .icon {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .iconLight {
   color: hsl(200, 15%, 8%);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.input__containerLight:hover .iconLight {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .select {
-  background-color: hsl(209, 23%, 22%);
+  background: linear-gradient(
+    145deg,
+    hsl(209, 23%, 22%) 0%,
+    hsl(209, 23%, 18%) 100%
+  );
   overflow: hidden;
   width: 165px;
-  border-radius: 6px;
+  border-radius: 12px;
   height: 48px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .select select {
-  background-color: hsl(209, 23%, 22%);
+  background: transparent;
   outline: none;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 15px 20px 20px;
   color: white;
+  font-size: 1.4rem;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.select select option {
+  color: black;
 }
 
 .selectLight {
-  box-shadow: 0 0 3px hsl(0, 0%, 52%);
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(200, 15%, 8%);
+  background: linear-gradient(
+    145deg,
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 98%) 100%
+  );
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.selectLight select {
+  color: black !important;
 }
 
-.selectLight select {
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(200, 15%, 8%);
+.selectLight:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.selectLight > select > option {
+  background: transparent;
+  color: hsl(200, 15%, 8%) !important;
 }
 
 @media screen and (max-width: 1325px) {
@@ -107,7 +177,7 @@
   .form {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 20px
+    gap: 20px;
   }
 
   .input__container {
@@ -123,5 +193,4 @@
   .select select {
     width: 178px;
   }
-
 }

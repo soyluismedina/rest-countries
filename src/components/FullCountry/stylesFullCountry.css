@@ -6,11 +6,23 @@
   gap: 40px;
   padding-bottom: 100px;
   max-width: 1440px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fullCountry__imageContainer {
   display: flex;
-
+  position: relative;
 }
 
 .fullCountry__image {
@@ -18,78 +30,147 @@
   max-width: 570px;
   object-fit: cover;
   max-height: 430px;
-  box-shadow: 0 0 3px hsl(0, 0%, 52%);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fullCountry__imageContainer:hover .fullCountry__image {
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
 }
 
 .fullCountry__button {
-  background-color: hsl(209, 23%, 22%);
+  background: linear-gradient(
+    135deg,
+    hsl(209, 23%, 22%) 0%,
+    hsl(209, 23%, 18%) 100%
+  );
   color: white;
   outline: none;
   border: none;
-  padding: 8px 25px;
-  border-radius: 6px;
+  padding: 12px 28px;
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 0 5px black
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fullCountry__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    135deg,
+    hsl(209, 23%, 25%) 0%,
+    hsl(209, 23%, 21%) 100%
+  );
+}
+
+.fullCountry__button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .fullCountry__buttonLight {
-  background-color: hsl(0, 0%, 100%);
+  background: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 98%) 100%
+  );
   color: hsl(200, 15%, 8%);
-  box-shadow: 0 0 3px hsl(0, 0%, 52%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-
-.fullCountry__button:active {
-  transform: translateY(2px);
+.fullCountry__buttonLight:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, hsl(0, 0%, 98%) 0%, hsl(0, 0%, 96%) 100%);
 }
 
 .fullCountry__button ion-icon {
-  padding: 0;
-  margin: 0;
-  width: 25px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.fullCountry__button:hover ion-icon {
+  transform: translateX(-3px);
 }
 
 .fullCountry__buttonContainer {
   width: 85vw;
   margin: 40px auto;
   max-width: 1440px;
+  display: flex;
+  justify-content: center;
 }
 
 .fullCountry__text {
   color: #fff;
   padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .fullCountry__textLight {
   color: hsl(200, 15%, 8%);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .fullCountry__text h2 {
   font-size: 3rem;
   margin-bottom: 35px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .fullContry__textContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 35px
+  gap: 35px;
 }
 
 .fullContry__textContainer h3 {
   font-weight: 600;
   font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
 }
 
-.containerTags>h3 {
+.fullCountry__textLight .fullContry__textContainer h3 {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.containerTags > h3 {
   font-weight: 600;
   font-size: 1.6rem;
   display: block;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fullCountry__textLight .containerTags > h3 {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .containerTags {
-  margin-top: 80px;
+  margin-top: 40px;
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .containerTags h3 {
@@ -107,7 +188,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }
 
 @media screen and (max-width: 780px) {

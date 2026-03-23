@@ -8,6 +8,18 @@
   margin: 0 auto;
   place-content: center;
   padding-bottom: 150px;
+  animation: fadeInGrid 0.6s ease-out;
+}
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .withoutMatches {
@@ -15,8 +27,19 @@
   color: hsl(0, 0%, 100%);
   padding-top: 150px;
   font-size: 1.8rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px 60px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .withoutMatchesLight {
   color: hsl(200, 15%, 8%);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }

@@ -1,17 +1,29 @@
 .header {
   min-height: 70px;
   width: 100%;
-  background-color: hsl(209, 23%, 22%);
-  box-shadow: 0 0 5px black;
+  background: linear-gradient(
+    135deg,
+    hsl(209, 23%, 22%) 0%,
+    hsl(209, 23%, 18%) 100%
+  );
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 100;
   align-items: center;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .headerLight {
-  background-color: hsl(0, 0%, 100%);
+  background: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 98%) 100%
+  );
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header__container {
@@ -30,10 +42,28 @@
   font-size: 1.8rem;
   color: hsl(0, 0%, 100%);
   font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.header__container a:hover {
+  transform: translateY(-2px);
+  color: hsl(0, 0%, 100%);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .header_containerLight p:first-child {
   color: hsl(200, 15%, 8%);
+}
+
+.header_containerLight a {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header_containerLight a:hover {
+  color: hsl(200, 15%, 8%);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .themeMode {
@@ -47,14 +77,37 @@
   color: white;
   gap: 10px;
   cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.themeMode:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .themeMode p {
   white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .themeModeLight {
   color: hsl(200, 15%, 8%);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.themeModeLight:hover {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (max-width: 675px) {
